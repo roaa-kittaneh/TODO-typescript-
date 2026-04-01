@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import TodoItem, { type Todo } from './TodoItem'; 
 
-// ...existing code...
 const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
