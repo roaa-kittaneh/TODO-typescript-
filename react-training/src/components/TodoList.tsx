@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import TodoItem, { type Todo } from './TodoItem'; 
+import Button from './Button'; 
+
+type FilterType = 'all' | 'active' | 'completed';
 
 const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
+  
+  const [filter, setFilter] = useState<FilterType>('all');
 
   const handleAddTodo = () => {
-    if (inputValue.trim() === '') return; 
-    
-    const newTodo: Todo = {
-      id: Date.now(), 
-      text: inputValue,
-      completed: false
-    };
-
-    setTodos([...todos, newTodo]); 
-    setInputValue(''); 
+    if (inputValue.trim() === '') return;
+    const newTodo: Todo = { id: Date.now(), text: inputValue, completed: false };
+    setTodos([...todos, newTodo]);
+    setInputValue('');
   };
 
   const toggleTodo = (id: number) => {
@@ -27,6 +26,13 @@ const TodoList: React.FC = () => {
   const deleteTodo = (id: number) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
+
+ 
+  const filteredTodos = todos.filter(todo => {
+    if (filter === 'active') return !todo.completed;
+    if (filter === 'completed') return todo.completed;
+    return true; 
+  });
 
   return (
     <div style={{ maxWidth: '400px', margin: '40px auto', padding: '20px', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)', backgroundColor: 'white' }}>
@@ -40,20 +46,38 @@ const TodoList: React.FC = () => {
           placeholder="add a new task..."
           style={{ flex: 1, padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}
         />
-        <button 
-          onClick={handleAddTodo}
-          style={{ padding: '10px 15px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+        <Button onClick={handleAddTodo}>Add</Button>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
+        <Button 
+          variant="secondary" 
+          isActive={filter === 'all'} 
+          onClick={() => setFilter('all')}
         >
-          add
-        </button>
+          all
+        </Button>
+        <Button 
+          variant="secondary" 
+          isActive={filter === 'active'} 
+          onClick={() => setFilter('active')}
+        >
+            active
+        </Button>
+        <Button 
+          variant="secondary" 
+          isActive={filter === 'completed'} 
+          onClick={() => setFilter('completed')}
+        >
+          completed
+        </Button>
       </div>
 
       <div>
-        {/* تمرير البيانات (Props Drilling) للابن */}
-        {todos.length === 0 ? (
-          <p style={{ textAlign: 'center', color: '#888' }}>no tasks available</p>
+        {filteredTodos.length === 0 ? (
+          <p style={{ textAlign: 'center', color: '#888' }}>No matching tasks.</p>
         ) : (
-          todos.map(todo => (
+          filteredTodos.map(todo => (
             <TodoItem 
               key={todo.id} 
               todo={todo} 
