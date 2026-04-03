@@ -17,8 +17,9 @@ A functional task management app demonstrating component hierarchy and data flow
 
 
 <img width="444" height="213" alt="Screenshot 2026-04-01 195243" src="https://github.com/user-attachments/assets/ed32b482-979f-482f-98e5-c2ecf2beedb3" />
-<img width="489" height="328" alt="Screenshot 2026-04-01 201833" src="https://github.com/user-attachments/assets/4b5c77e0-d325-48ee-89b7-d4a7f2f87a9d" />
-<img width="491" height="310" alt="Screenshot 2026-04-01 201851" src="https://github.com/user-attachments/assets/8bab062e-f407-402a-b13a-848147e5f09c" />
+<img width="482" height="471" alt="Screenshot 2026-04-03 183458" src="https://github.com/user-attachments/assets/e9f8f786-4cdb-4dac-b1e4-334934da25bf" />
+<img width="498" height="415" alt="Screenshot 2026-04-03 183505" src="https://github.com/user-attachments/assets/b6ac2461-8210-4bfc-8f94-777edb4adfeb" />
+<img width="490" height="326" alt="Screenshot 2026-04-03 183512" src="https://github.com/user-attachments/assets/f209cece-a5e6-4e9a-9f6d-7e22454e472f" />
 <img width="560" height="234" alt="Screenshot 2026-04-01 204504" src="https://github.com/user-attachments/assets/a494df37-cb9f-4a36-bf61-202dc49dc17f" />
 <img width="556" height="231" alt="Screenshot 2026-04-01 204947" src="https://github.com/user-attachments/assets/025b7007-0e52-40c5-a4e8-98a647e1ac19" />
 
